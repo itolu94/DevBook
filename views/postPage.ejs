@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Post Page</title>
+</head>
+<body>
+	<form action="/post" method="POST">
+		<input type="text" name="post" placeholder="New post">
+	</form>	
+
+	<% for(var i; i < feed.length; i++) {
+
+	<div id="Recent Post">
+		<% feed[i].post %> 
+	</div>
+	
+	} %>
+
+
+</body>
+</html>

@@ -1,3 +1,6 @@
+var bcrypt = require("bcrypt");
+var saltRounds = 10;
+
 module.exports = function(sequelize, DataTypes) {
 	var Member = sequelize.define("Member", {
 		username: {
@@ -7,13 +10,13 @@ module.exports = function(sequelize, DataTypes) {
 				len: [1]
 			},
 		},
-		//Rework password to work with bcrypt if needed
+
 		password: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				len: [1]
-			},
+				len: [1, 72]
+			}
 		}
 	}, {
 		classMethods: {
@@ -24,13 +27,31 @@ module.exports = function(sequelize, DataTypes) {
 			// 			allowNull: false
 			// 		}
 			// 	});
-			// }
-			//encryption method goes here
+			// },
+
+			//encryption
+			hashPassword: function(password, cb) {
+				bcrypt.genSalt(saltRounds, function(err, salt){
+					bcrypt.hash(password, salt, function(err, hash){
+						if (err) cb(err);
+						cb(null, hash);
+					});
+				});
+			}
 		},
 		instanceMethods: {
-			//decryption method goes here
-			checkPassword: function(password) {
-				return this.password === password;
+			//decryption
+			checkPassword: function(pass, cb) {
+				bcrypt.compare(pass, this.password, cb);
+			}
+		},
+		hooks: {
+			beforeCreate: function(member) {
+				Member.hashPassword(member.password, function(err, hash){
+					if (err) throw err;
+					member.setDataValue("password", hash);
+					member.save();
+				});
 			}
 		}
 

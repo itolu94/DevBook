@@ -10,9 +10,7 @@ passport.use(new Strategy(
   function(username, password, cb) {
     db.Member.findOne({where:{username:username}}).then(function(user) {
       if (!user) { return cb(null, false); }
-      // if (!user.checkPassword(password)) { return cb(null, false); }
       user.checkPassword(password, function(err, res){
-        console.log(res);
         if (err || !res){
           return cb(null, false);
         }
@@ -57,6 +55,7 @@ app.set("view engine", "ejs");
 
 //Routes
 require("./routes/login-routes.js")(app,passport);
+require("./routes/post-routes.js")(app,passport);
 
 //Sync and Start
 db.sequelize.sync().then(function(){

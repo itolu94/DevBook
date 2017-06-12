@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				len: [1]
+				len: [1],
 				is: /^[a-zA-Z]+[-\s]?[a-zA-Z]+$/i
 			}
 		},
@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				len: [1]
+				len: [1],
 				is: /^[a-zA-Z]+[-\s]?[a-zA-Z]+$/i
 			}
 		},
@@ -23,6 +23,9 @@ module.exports = function(sequelize, DataTypes) {
 				len: [1],
 				is: /^[\w-]+[@]{1}[\w-]+[.]{1}[a-z]+$/i
 			}
+		},
+		image: {
+			type: DataTypes.STRING
 		}
 	}, {
 		classMethods: {
@@ -31,6 +34,11 @@ module.exports = function(sequelize, DataTypes) {
 					foreignKey: {
 						allowNull: false
 					}
+				});
+
+				User.belongsToMany(models.User, {
+					as: 'Friends',
+					through: 'UserFriends'
 				});
 			}
 		}

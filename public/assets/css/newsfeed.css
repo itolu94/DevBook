@@ -1,0 +1,107 @@
+body {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(yellow, red);
+}
+
+
+/*start primary divs*/
+
+#uno {
+    width: 98%;
+    height: 60px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*inside uno div*/
+
+#robot {
+    display: inline-block;
+}
+
+#dos {
+    width: 100%;
+    background-color: black;
+    margin-top: 5px;
+}
+
+
+/*end primary divs*/
+
+
+/*start secondary divs*/
+
+#ichi {
+    width: 20%;
+    height: 450px;
+    float: left;
+    margin-left: 1%;
+    background-color: none;
+}
+
+
+/*inside personal info*/
+
+#ni {
+    float: left;
+    width: 56%;
+    height: 1000px;
+    margin-left: 1%;
+    margin-right: 1%;
+    background-color: none;
+}
+
+#san {
+    float: left;
+    height: 450px;
+    width: 20%;
+    margin-right: 1%;
+    background-color: #D5573C;
+}
+
+
+/*end secondary divs*/
+
+
+/*input ids*/
+
+.three {
+    width: 95%;
+    height: 120px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    border: 0px;
+    background-color: white;
+    margin-top: 60px;
+}
+
+#two {
+    width: 95%;
+    height: 60px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    border: 0px;
+}
+
+#post,
+#Like {
+    margin-top: 5px;
+    width: 50px;
+    height: 30px;
+    float: right;
+    margin-right: 2.5%;
+    text-align: center;
+}
+
+#Comment {
+    margin-top: 5px;
+    width: 80px;
+    height: 30px;
+    float: right;
+    margin-right: 2.5%;
+    text-align: center;
+}

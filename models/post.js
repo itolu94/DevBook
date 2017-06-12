@@ -1,3 +1,5 @@
+
+
 module.exports = function(sequelize, DataTypes) {
 	var Post = sequelize.define("Post", {
 		post: {
@@ -11,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
 		classMethods: {
 			associate: function(models){
 				//switch models.member to models.user when it exists
-				Post.belongsTo(models.Member, {
+				Post.belongsTo(models.User, {
 					foreignKey: {
 						allowNull: false
 					}

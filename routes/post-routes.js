@@ -16,7 +16,7 @@ module.exports = function(app, passport) {
 	app.post("/post", function(req, res){
 		db.Post.create({
 			post: req.body.post,
-			MemberId: req.user.id
+			UserId: req.user.id
 		}).then(function(data){
 			res.redirect("/post");
 		});

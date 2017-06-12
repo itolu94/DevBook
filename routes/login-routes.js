@@ -30,9 +30,10 @@ module.exports = function(app, passport) {
 				username: req.body.username
 			}
 		}).then(function(data){
+			console.log(req.body);
 			if(!data){
 				db.Member.create({
-					username: req.body.email,
+					username: req.body.username,
 					password: req.body.password
 				}).then(function(member){
 					db.User.create({

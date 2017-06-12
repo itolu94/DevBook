@@ -51,7 +51,7 @@ app.use(passport.session());
 
 //Using EJS for testing that logins work, switch to handlebars or whatever we use for actual pages
 app.set("views", __dirname + "/views");
-app.set("view engine", "ejs");
+app.set("view engine", "handlebars");
 
 //Routes
 require("./routes/login-routes.js")(app,passport);

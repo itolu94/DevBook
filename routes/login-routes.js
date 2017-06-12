@@ -3,7 +3,6 @@ var db = require("../models");
 module.exports = function(app, passport) {
 
 	app.get("/", function(req, res) {
-		//this req.user needs to be changed to a query once user details implemented
 	    res.render("home", {user:req.user});
 	});
 
@@ -33,10 +32,17 @@ module.exports = function(app, passport) {
 		}).then(function(data){
 			if(!data){
 				db.Member.create({
-					username: req.body.username,
+					username: req.body.email,
 					password: req.body.password
-				}).then(function(){
-					res.redirect("/login");
+				}).then(function(member){
+					db.User.create({
+						first_name: req.body.first,
+						last_name: req.body.last,
+						email: req.body.email,
+						MemberId: member.id
+					}).then(function(){
+						res.redirect("/login");
+					});
 				});
 			}
 			else{

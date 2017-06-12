@@ -21,13 +21,13 @@ module.exports = function(sequelize, DataTypes) {
 	}, {
 		classMethods: {
 			//Set up id as foreign key for profile, commented out until User exists
-			// associate: function(models) {
-			// 	Member.belongsTo(models.User, {
-			// 		foreignKey: {
-			// 			allowNull: false
-			// 		}
-			// 	});
-			// },
+			associate: function(models) {
+				Member.hasOne(models.User, {
+					foreignKey: {
+						allowNull: false
+					}
+				});
+			},
 
 			//encryption
 			hashPassword: function(password, cb) {

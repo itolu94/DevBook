@@ -40,7 +40,14 @@ body {
     height: 450px;
     float: left;
     margin-left: 1%;
-    background-color: #3CD5C5;
+    background-color: none;
+}
+
+
+/*inside personal info*/
+
+#personal {
+    font-size: 26px;
 }
 
 #ni {

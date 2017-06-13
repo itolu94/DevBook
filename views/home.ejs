@@ -9,27 +9,27 @@
             <title>News Feed</title>
             <link rel="stylesheet" href="../public/assets/css/newsfeed.css">
         </head>
-
-        <body>
-            <div id="uno">
-                <button><img src="../public/assets/img/JuniorDevbook.png" alt="robot" style="width:40px;height:50px;" id="robot"></button>
-            </div>
-            <div id="dos">
-                <div id="ichi">Personal Info
-                    <div id="personal"></div>
+<body>
+    <div id="uno">
+        <button><img src="assets/img/JuniorDevBook-icon.png" alt="robot" style="width:40px;height:50px;" id="robot"></button>
+        <link rel="stylesheet" href="/logout">
+    </div>
+    <div id="dos">
+        <div id="ichi">Personal Info
+            <div id="personal"></div>
+        </div>
+        <div id="ni">Main News feed
+            <form action="/post" method="POST">
+                <input type="text" name="post" class="form-control" placeholder="Share what you want." id="two" style="font-size:26px;">
+            </form>  
+            <% for(var i in feed) { %>
+                <div class="three">
+                    <%=feed[i].post%>
                 </div>
-                <div id="ni">Main News feed
-                    <form action="/post" method="POST">
-                        <input type="text" name="post" class="form-control" placeholder="Share what you want." id="two" style="font-size:26px;">
-                    </form>
-                    <% for(var i in feed) { %>
-                        <div class="three">
-                            <%=feed[i].post%>
-                        </div>
                         <% } %>
-                </div>
-                <div id="san">Trending News
-                </div>
+         </div>
+         <div id="san">Trending News
+          </div>
             </div>
         </body>
 

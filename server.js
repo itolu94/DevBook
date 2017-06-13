@@ -35,7 +35,7 @@ passport.deserializeUser(function(id, cb) {
 //Express Configuration
 var app = express();
 
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8081;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

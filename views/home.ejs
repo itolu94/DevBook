@@ -1,16 +1,14 @@
 <% if (!user) { %>
-	<p><a href="/login">log in</a></p>
-	<p><a href="/create">create account</a></p>
-<% } else { %>
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>News Feed</title>
-    <link rel="stylesheet" href="/assets/css/newsfeed.css">
-    <link rel="stylesheet" href=".css">
-</head>
+    <p><a href="/login">log in</a></p>
+    <p><a href="/create">create account</a></p>
+    <% } else { %>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>News Feed</title>
+            <link rel="stylesheet" href="../public/assets/css/newsfeed.css">
+        </head>
 <body>
     <div id="uno">
         <button><img src="assets/img/JuniorDevBook-icon.png" alt="robot" style="width:40px;height:50px;" id="robot"></button>
@@ -28,13 +26,13 @@
                 <div class="three">
                     <%=feed[i].post%>
                 </div>
-                <% } %>
-        </div>
-        <div id="san">Trending News
-        </div>
-    </div>
-</body>
+                        <% } %>
+         </div>
+         <div id="san">Trending News
+          </div>
+            </div>
+        </body>
 
-</html>
+        </html>
 
-<% } %>
+        <% } %>

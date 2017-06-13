@@ -1,38 +1,55 @@
 <% if (!user) { %>
-    <p><a href="/login">log in</a></p>
-    <p><a href="/create">create account</a></p>
-    <% } else { %>
-        <!DOCTYPE html>
-        <html>
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            <!-- homepage stylesheet -->
+            <link rel="stylesheet" href="assets/css/homepage.css">
+            <title>Jr.DevBook</title>
+        </head>
+        <!-- Jr.DevBook Robot Logo -->
+        <body>
+            <div class="login text-center center-block ">
+                <img src="assets/img/JuniorDevBook-icon.png" alt="
+                robot" id="robot">  
+                <p><a href="/login">log in</a></p>
+                <p><a href="/create">create account</a></p>
+            </div>
+        </body>
+    </html>
+    
+<% } else { %>
+    <!DOCTYPE html>
+    <html>
         <head>
             <meta charset="UTF-8">
             <title>News Feed</title>
             <link rel="stylesheet" href="assets/css/newsfeed.css">
         </head>
-<body>
-    <div id="uno">
-        <button><img src="assets/img/JuniorDevBook-icon.png" alt="robot" style="width:40px;height:50px;" id="robot"></button>
-        <button><a rel="stylesheet" href="/logout">Log Out </a> </button>
-    </div>
-    <div id="dos">
-        <div id="ichi">Personal Info
-            <div id="personal"></div>
+        <body>
+            <div id="uno">
+            <button><img src="assets/img/JuniorDevBook-icon.png" alt="robot" style="width:40px;height:50px;" id="robot"></button>
+            <button><a rel="stylesheet" href="/logout">Log Out </a> </button>
         </div>
-        <div id="ni">Main News feed
-            <form action="/post" method="POST">
-                <input type="text" name="post" class="form-control" placeholder="Share what you want." id="two" style="font-size:26px;">
-            </form>  
-            <% for(var i in feed) { %>
-                <div class="three">
-                    <%=feed[i].post%>
+            <div id="dos">
+                <div id="ichi">Personal Info
+                    <div id="personal"></div>
                 </div>
-                        <% } %>
-         </div>
-         <div id="san">Trending News
-          </div>
+                <div id="ni">Main News feed
+                    <form action="/post" method="POST">
+                        <input type="text" name="post" class="form-control" placeholder="Share what you want." id="two" style="font-size:26px;">
+                    </form>  
+                    <% for(var i in feed) { %>
+                        <div class="three">
+                            <%=feed[i].post%>
+                        </div>
+                    <% } %>
+                </div>
+                <div id="san">Trending News
+                </div>
             </div>
         </body>
-
-        </html>
-
-        <% } %>
+    </html>
+<% } %>

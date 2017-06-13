@@ -46,6 +46,11 @@ body {
 
 /*inside personal info*/
 
+#personal {
+    font-size: 26px;
+    overflow: auto;
+}
+
 #ni {
     float: left;
     width: 56%;

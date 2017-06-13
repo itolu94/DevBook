@@ -2,15 +2,7 @@ var db = require("../models");
 
 module.exports = function(app, passport) {
 	app.get("/post", function(req, res){
-		if(!req.user) {
-			res.redirect("login");
-		}
-		else {
-			db.Post.findAll({raw:true}).then(function(data){
-				console.log(data);
-				res.render("post", {feed:data, user:req.user});
-			});
-		}
+		res.redirect("/");
 	});
 
 	app.post("/post", function(req, res){

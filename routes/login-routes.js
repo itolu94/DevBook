@@ -3,7 +3,15 @@ var db = require("../models");
 module.exports = function(app, passport) {
 
 	app.get("/", function(req, res) {
-	    res.render("home", {user:req.user});
+		if(!req.user) {
+			res.render("home", {user:req.user});
+		}
+		else {
+			db.Post.findAll({raw:true}).then(function(data){
+				console.log(data);
+				res.render("home", {feed:data, user:req.user});
+			});
+		}
 	});
 
 	app.post("/login", 

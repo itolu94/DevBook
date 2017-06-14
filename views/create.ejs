@@ -2,19 +2,26 @@
 <html lang = "en-us">
   <head>
       <meta charset="utf-8">
-<title>JuniorDevbook</title>
+<title>JrDevbook</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
   <body>
-    <header><strong> JuniorDevBook </header></strong>
-
+<div class="header center-block text-center" id='logo'>
+            <div class='form-inline'><img src="http://blog.flamingtext.com/blog/2017/06/14/flamingtext_com_1497479233_446317805.png" border="0"></div>
+            <button><img src="assets/img/JuniorDevBook-icon.png" alt="robot" style="width:40px;height:50px;" id="robot" href="/logout"></button>
+            
+        </div>
+<br>
+<br>
+<div class ='container text-center' id='missionstatement'>
     <p>Connect with your fellow developers and your awesome projects
-       you’ve created and get feedback from you peers.<p>
+       you’ve created and get feedback from you peers.</p></header></div>
+
     <h1> Create Account</h1>
-      <div class="createAccount">
+      <div class="container createAccount">
       <form action="/create" method="post">
         <input type="text" name="first" placeholder="First Name" value="" class="name">
         <br>

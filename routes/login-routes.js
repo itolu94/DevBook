@@ -7,7 +7,7 @@ module.exports = function(app, passport) {
 			res.render("home", {user:req.user});
 		}
 		else {
-			db.Post.findAll({raw:true}).then(function(data){
+			db.Post.findAll({include:[db.Comment]}).then(function(data){
 				console.log(data);
 				res.render("home", {feed:data, user:req.user});
 			});

@@ -23,7 +23,7 @@ module.exports = function(app, passport) {
 	 });
 
 	app.get("/login", function(req, res){
-		res.render("login");
+		res.render("login", {message: req.flash()});
 	});
 
 	app.get("/create", function(req, res){
@@ -48,6 +48,7 @@ module.exports = function(app, passport) {
 						first_name: req.body.first,
 						last_name: req.body.last,
 						email: req.body.email,
+						image: req.body.image,
 						MemberId: member.id
 					}).then(function(){
 						res.redirect("/login");

@@ -3,16 +3,19 @@ var express = require('express');
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var bodyParser = require("body-parser");
+var flash = require("connect-flash");
 var db = require("./models");
 
 //Passport Configuration
-passport.use(new Strategy(
+passport.use(new Strategy({
+  passReqToCallBack: true
+},
   function(username, password, cb) {
     db.Member.findOne({where:{username:username}}).then(function(user) {
-      if (!user) { return cb(null, false); }
+      if (!user) { return cb(null, false, {message: "Invalid Username."}); }
       user.checkPassword(password, function(err, res){
         if (err || !res){
-          return cb(null, false);
+          return cb(null, false, {message: "Invalid Password."});
         }
         else {
           return cb(null, user.toJSON());
@@ -43,6 +46,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+app.use(flash());
 
 app.use(express.static("./public"));
 

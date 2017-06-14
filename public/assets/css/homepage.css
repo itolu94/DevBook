@@ -8,7 +8,9 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
-
+.logo{
+    background: linear-gradient(grey,#3b5998);
+}
 html {
     height: auto;
     min-height: 100vh;

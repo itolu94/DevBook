@@ -7,7 +7,7 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
             <!-- homepage stylesheet -->
             <link rel="stylesheet" href="assets/css/homepage.css">
-            <title>Jr.DevBook</title>
+            <title>JrDevBook</title>
         </head>
         <!-- Jr.DevBook Robot Logo -->
         <body>
@@ -26,12 +26,14 @@
         <head>
             <meta charset="UTF-8">
             <title>News Feed</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
             <link rel="stylesheet" href="assets/css/newsfeed.css">
         </head>
         <body>
-            <div id="uno">
-            <button><img src="assets/img/JuniorDevBook-icon.png" alt="robot" style="width:40px;height:50px;" id="robot"></button>
-            <button><a rel="stylesheet" href="/logout">Log Out </a> </button>
+         <div class="header center-block text-center" id='logo'>
+            <div class='form-inline'><img src="http://blog.flamingtext.com/blog/2017/06/14/flamingtext_com_1497479233_446317805.png" border="0"></div>
+            <button><img src="assets/img/JuniorDevBook-icon.png" alt="robot" style="width:40px;height:50px;" id="robot" href="/logout"></button>
+            
         </div>
             <div id="dos">
                 <div id="ichi">Personal Info
@@ -42,9 +44,18 @@
                         <input type="text" name="post" class="form-control" placeholder="Share what you want." id="two" style="font-size:26px;">
                     </form>  
                     <% for(var i in feed) { %>
-                        <div class="three">
+                        <div>
+                        <div class="postBody">
+                        <p class='comments'>
+                            
+                            <%=feed[i].comments%>
+                        </p>
+
                             <%=feed[i].post%>
                         </div>
+                            <button class="Comment btn btn-danger" type="button">Comment</button>
+                            <button class="Like btn btn-success" type="button">Like</button>    
+                    </div>
                     <% } %>
                 </div>
                 <div id="san">Trending News

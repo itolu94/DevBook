@@ -2,7 +2,7 @@ body {
     width: 85%;
     margin-left: auto;
     margin-right: auto;
-    background: linear-gradient(white, green);
+    background: linear-gradient(grey,white);
     background-repeat: no-repeat;
     height: auto;
 }

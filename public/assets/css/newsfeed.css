@@ -2,25 +2,25 @@ body {
     width: 85%;
     margin-left: auto;
     margin-right: auto;
-    background: linear-gradient(yellow, red);
+   background: linear-gradient(grey,#3b5998);
 }
 
 
 /*start primary divs*/
 
-#uno {
+/*#uno {
     width: 98%;
     height: 60px;
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-}
+}*/
 
 
 /*inside uno div*/
 
-#robot {
-    display: inline-block;
+/*#robot {
+    display: inline-block;*/
 }
 
 #dos {
@@ -74,9 +74,9 @@ body {
 
 /*input ids*/
 
-.three {
+.postBody {
     width: 95%;
-    height: 120px;
+    height:auto;
     margin-left: 2.5%;
     margin-right: 2.5%;
     border: 0px;
@@ -93,7 +93,7 @@ body {
 }
 
 #post,
-#Like {
+.Like {
     margin-top: 5px;
     width: 50px;
     height: 30px;
@@ -102,9 +102,9 @@ body {
     text-align: center;
 }
 
-#Comment {
+.Comment {
     margin-top: 5px;
-    width: 80px;
+    width: 90px;
     height: 30px;
     float: right;
     margin-right: 2.5%;

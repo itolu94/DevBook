@@ -10,7 +10,23 @@ module.exports = function(app, passport) {
 			post: req.body.post,
 			UserId: req.user.id
 		}).then(function(data){
-			res.redirect("/post");
+			res.redirect("/");
+		});
+	});
+
+	app.post("/post/comment/:postid", function(req, res){
+		db.Post.findOne({
+			where: {
+				id: req.params.postid
+			}
+		}).then(function(post){
+			db.Comment.create({
+				comment: req.body.comment,
+				UserId: req.user.id,
+				PostId: req.params.postid
+			}).then(function(comment){
+				res.redirect("/")
+			});
 		});
 	});
 };

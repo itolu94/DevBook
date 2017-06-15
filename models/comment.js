@@ -1,25 +1,22 @@
-
-
 module.exports = function(sequelize, DataTypes) {
-	var Post = sequelize.define("Post", {
-		post: {
+	var Comment = sequelize.define("Comment", {
+		comment: {
 			type: DataTypes.TEXT,
 			allowNull: false,
 			validate: {
-				len: [1,2500]
+				len: [1]
 			}
 		}
-	}, {
+		}, {
 		classMethods: {
 			associate: function(models){
-				//switch models.member to models.user when it exists
-				Post.belongsTo(models.User, {
+				Comment.belongsTo(models.Post, {
 					foreignKey: {
 						allowNull: false
 					}
 				});
 
-				Post.hasMany(models.Comment, {
+				Comment.belongsTo(models.User, {
 					foreignKey: {
 						allowNull: false
 					}
@@ -27,5 +24,5 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		}
 	});
-	return Post;
-};
+	return Comment;
+}

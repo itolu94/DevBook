@@ -4,7 +4,6 @@
       <meta charset="utf-8">
 <title>JrDevbook</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
@@ -20,28 +19,33 @@
     <p>Connect with your fellow developers and your awesome projects
        you’ve created and get feedback from you peers.</p></header></div>
 
-    <h1> Create Account</h1>
+    <p class ='text-center'> Create Account</p>
       <div class="container createAccount">
-      <form action="/create" method="post">
-        <input type="text" name="first" placeholder="First Name" value="" class="name">
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+                <form action="/create" method="post">
+        <input type="text" name="first" placeholder="First Name" value="" >
         <br>
         <br>
-        <input type="text" name="last" placeholder="Last Name" value="" class="name">
+        <input type="text" name="last" placeholder="Last Name" value="" >
         <br>
         <br>
-        <input type="email" name="email" placeholder="Email Address" value="" id="email">
+        <input type="email" name="email" placeholder="Email Address" value="" >
         <br>
         <br>
-        <input type="text" name="username" placeholder="Username" value="" id="email">
+        <input type="text" name="username" placeholder="Username" value="">
         <br>
         <br>
-        <input type="text" name="password" placeholder="Enter Password" value="" id="password">
+        <input type="text" name="password" placeholder="Enter Password" value="" >
         <br>
         <br>
-        <input type="text" name="image" placeholder="Upload Image Link" value="" id="link">
+        <input type="text" name="image" placeholder="Upload Image Link" value="" >
         <br>
         <br>
-        <input type="submit" id="submit">
+        <input type="submit">
+      </form>
+        </div>
+      </div>
       </div>
   </body>
 </html>

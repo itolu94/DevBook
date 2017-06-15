@@ -1,24 +1,13 @@
-  {
-    "development": {
-        "username": "root",
-        "password": "",
-        "database": "jrdevbook_db",
-        "host": "127.0.0.1",
-        "dialect": "mysql"
-    },
-    "test": {
-        "username": "root",
-        "password": null,
-        "database": "database_test",
-        "host": "127.0.0.1",
-        "dialect": "mysql"
-    },
-    "production": {
-        "username": "obii4hsj1qz283h2",
-        "password": "is68dwpuz13bnh5n",
-        "database": "e2lqqmgt5o3r4htc",
-        "host": "lg7j30weuqckmw07.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-        "dialect": "mysql",
-        "use_env_variable": "mysql://obii4hsj1qz283h2:is68dwpuz13bnh5n@lg7j30weuqckmw07.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/e2lqqmgt5o3r4htc"
-    }
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
+  }
 }

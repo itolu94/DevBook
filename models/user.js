@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			validate: {
 				len: [1],
-				is: /^[a-zA-Z]+[-\s]?[a-zA-Z]+$/i
+				is: /^[a-z]+([-\s]?[a-z]+)?$/i
 			}
 		},
 		last_name: {
@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			validate: {
 				len: [1],
-				is: /^[a-zA-Z]+[-\s]?[a-zA-Z]+$/i
+				is: /^[a-z]+([-\s]?[a-z]+)?$/i
 			}
 		},
 		email: {

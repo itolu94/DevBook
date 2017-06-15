@@ -10,25 +10,21 @@
         </head>
         <!-- JrDevBook Robot Logo -->
         <body>
-     <div class="header center-block text-center" id='logo'>
+      <div class="header center-block text-center" id='logo'>
             <div class='form-inline'><img src="http://blog.flamingtext.com/blog/2017/06/14/flamingtext_com_1497479233_446317805.png" border="0"></div>
-            <button><img src="assets/img/JuniorDevBook-icon.png" alt="robot" style="width:40px;height:50px;" id="robot" href="/logout"></button>
+            <a href='/logout'> <img src="assets/img/JuniorDevBook-icon.png" alt="robot" style="width:40px;height:50px;" id="robot"></a>
             
         </div>
        	<div class="container center-block text-center" id='userLogin'>
        		<div class="row">
        			<div class="col-xs-12"> 
-       				<div>
-                	<img src="assets/img/JuniorDevBook-icon.png" alt="
-                robot" id="robotLogin">  
+       				<div>  
 					<form action="/login" method="post">
 						<div>
-							<label>Username:</label>
-							<input type="text" name="username"/><br/>
+							<input type="text" name="username" placeholder="Username" /><br/>
 						</div>
 						<div>
-							<label>Password:</label>
-							<input type="password" name="password"/>
+							<input type="password" name="password" placeholder="Password" />
 						</div>
             <% if(message.error) {%>
               <p><%=message.error%></p>

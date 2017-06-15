@@ -11,10 +11,11 @@ $('form').submit(function() {
 });
 
 
-
 socket.on('public', function(msg) {
     var div = $('<div>');
-    div.addClass('three');
-    
-    $('#messages').prepend()
+    div.addClass('postBody');
+    div.append(msg);
+
+    // wating on the div to prepend it to
+    $('#messages').prepend(div)
 });

@@ -1,15 +1,18 @@
+html{
+  height: auto;
+  min-height: 100vh;
+}
+
 body {
+    height: auto;
     width: 100%;
+    min-height: 100vh;
     margin-left: auto;
     margin-right: auto;
     background: linear-gradient(grey,#3b5998);
     background-repeat: no-repeat;
-    height: auto;
 }
 /*start primary divs*/
-html{
-  height: 100vh;
-}
 #head1,#head2,#head3{
   display: inline-block;
 }

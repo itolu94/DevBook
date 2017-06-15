@@ -1,3 +1,4 @@
+
 <% if (!user) { %>
     <!DOCTYPE html>
     <html lang="en">
@@ -11,9 +12,9 @@
         </head>
         <!-- Jr.DevBook Robot Logo -->
         <body>
-            <div class="header center-block text-center" id='logo'>
-            <div class='form-inline'><img src="http://blog.flamingtext.com/blog/2017/06/14/flamingtext_com_1497479233_446317805.png" border="0"></div>
-            <a href='/logout'> <img src="assets/img/JuniorDevBook-icon.png" alt="robot" style="width:40px;height:50px;" id="robot"></a>
+            <div class="login text-center center-block ">
+                <img src="assets/img/JuniorDevBook-icon.png" alt="
+                robot" id="robot">  
                 <p><a href="/login">log in</a></p>
                 <p><a href="/create">create account</a></p>
             </div>
@@ -32,7 +33,7 @@
         <body>
          <div class="header center-block text-center" id='logo'>
             <div class='form-inline'><img src="http://blog.flamingtext.com/blog/2017/06/14/flamingtext_com_1497479233_446317805.png" border="0"></div>
-            <a href='/logout'> <img src="assets/img/JuniorDevBook-icon.png" alt="robot" style="width:40px;height:50px;" id="robot"></a>
+            <button><img src="assets/img/JuniorDevBook-icon.png" alt="robot" style="width:40px;height:50px;" id="robot" href="/logout"></button>
             
         </div>
             <div id="dos">
@@ -42,6 +43,7 @@
                 <div id="ni">Main News feed
                     <form action="/post" method="POST">
                         <input type="text" name="post" class="form-control" placeholder="Share what you want." id="two" style="font-size:26px;">
+<<<<<<< HEAD
 
                     <div id='container'>
                     <% for (var j in feed[i].Comments) { %>
@@ -53,10 +55,28 @@
                                 <input type="text" name="comment">
                             </form>
 
+=======
+                    </form>  
+                    <% for(var i in feed) { %>
+                        <div>
+                        <div class="postBody">
+                        <%=feed[i].post%>
+                        <p class='comments'>
+                            <% for (var j in feed[i].Comments) { %>
+                            <p>
+                                <%=feed[i].Comments[j].comment%>
+                            </p>
+                            <% } %>
+                            <form class = 'commentForm' action=<%="/post/comment/" + feed[i].id%> method="POST">
+                                <input type="text" name="comment" style="width: 100%">
+                            </form>
+                        </p>
+                        </div>
+>>>>>>> 394e5a4ce70c8d746ca14b6d38727ab99ca5aada
                             <button class="Comment btn btn-danger" type="button">Comment</button>
                             <button class="Like btn btn-success" type="button">Like</button>    
-                    <% } %>
                     </div>
+                    <% } %>
                 </div>
                 <div id="san">Trending News
                 </div>
@@ -64,3 +84,5 @@
         </body>
     </html>
 <% } %>
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help

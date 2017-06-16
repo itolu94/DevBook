@@ -1,27 +1,24 @@
 body {
-    width: 85%;
     margin-left: auto;
     margin-right: auto;
-   background: linear-gradient(grey,#3b5998);
+    text-align: center;
+    background: linear-gradient(grey,#3b5998);
+/*    background-size: cover;*/
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 
-/*start primary divs*/
 
-/*#uno {
-    width: 98%;
-    height: 60px;
-    background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-}*/
-
-
-/*inside uno div*/
-
-/*#robot {
-    display: inline-block;*/
+.profilePicture {
+    width: 50px;
 }
+
+.authorInfo{
+float: left;
+}
+
+
 
 #dos {
     width: 100%;
@@ -82,6 +79,50 @@ body {
     border: 0px;
     background-color: white;
     margin-top: 60px;
+    
+}
+
+.authorPost{
+    clear: both;
+    font-size: 30px;
+    border-top: 2px black solid; 
+    border-bottom: 2px black solid; 
+    height: auto;
+}
+
+.authorInfo p {
+    font-size: 20px
+}
+
+.authorPost p {
+ text-align: left;
+ padding-top: 20px;
+}
+
+
+/*paragraph within commentsDiv*/
+.commentsDiv p{
+    clear: both;
+    text-align: left;
+    border-top: 1px grey solid;
+    padding: 1% 0;
+}
+
+/*comment*/
+.commentsText{
+    font-weight: bold;
+    font-size: 20px
+}
+
+/*text color change for the date the comment was*/
+.commentDate {
+    color: #0000EE;
+    float: right;
+}
+
+
+.commentAuthor {
+font-weight: bold;
 }
 
 #two {
@@ -110,3 +151,24 @@ body {
     margin-right: 2.5%;
     text-align: center;
 }
+
+
+
+
+
+/*start primary divs*/
+
+/*#uno {
+    width: 98%;
+    height: 60px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+}*/
+
+
+/*inside uno div*/
+
+/*#robot {
+    display: inline-block;
+}*/

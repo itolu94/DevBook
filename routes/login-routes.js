@@ -8,11 +8,12 @@ module.exports = function(app, passport) {
 		}
 		else {
 			// gets all the post on the feed
-			db.Post.findAll({include:[{model:db.Comment, include:db.User}, db.User], order: 'createdAt DESC'}).then(function(data){
+			db.Post.findAll({include:[{model:db.Comment, include:db.User}, db.User, {model:db.User, as:"Likes", through:"post_likes"}], order: 'createdAt DESC'}).then(function(data){
 				// finds the users personal info
 				db.User.findOne({where: {id: req.user.id}}).then(function(userInfo){
+					console.log(data);
 				res.render("home", {feed:data, user:req.user, personal: userInfo});
-				})
+				});
 			});
 		}
 	});

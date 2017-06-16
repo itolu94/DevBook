@@ -21,6 +21,11 @@ module.exports = function(sequelize, DataTypes) {
 						allowNull: false
 					}
 				});
+
+				Comment.belongsToMany(models.User, {
+					as: "Likes",
+					through: "comment_likes"
+				});
 			}
 		}
 	});

@@ -38,7 +38,13 @@
         </div>
             <div id="dos">
                 <div id="ichi">Personal Info
-                    <div id="personal"></div>
+                    <div id="personal">
+                    <p><%= personal.first_name + ' ' + personal.last_name%></p>
+                    <img src=<%=personal.image%>>
+                    <div class="personalBio">
+                        <h3>Bio: </h3>
+                    </div>
+                    </div>
                 </div>
                 <div id="ni">Main News feed
                     <form action="/post" method="POST">
@@ -47,17 +53,25 @@
                     <% for(var i in feed) { %>
                         <div>
                         <div class="postBody">
-                        <%=feed[i].post%>
-                        <p class='comments'>
-                            <% for (var j in feed[i].Comments) { %>
-                            <p>
-                                <%=feed[i].Comments[j].comment%>
-                            </p>
-                            <% } %>
+                            <div class='authorInfo'>
+                                <img  class='profilePicture' src=<%=feed[i].User.image%>>
+                                <p><%= feed[i].User.first_name + " " + feed[i].User.last_name %></p>
+                            </div>
+                            <div class="authorPost">
+                                <p> <%=feed[i].post%></p>
+                            </div>
+
+                             <div class='commentsDiv'>
+                                <p class="commentsText">Comments: </p>
+                                <% for (var j in feed[i].Comments) { %>
+                                    <p> <%=feed[i].Comments[j].comment%>
+                                <span class="commentAuthor">By: <%=feed[i].Comments[j].User.first_name + ' ' + feed[i].Comments[j].User.last_name%></span>
+                                <span class="commentDate">Date: <%= feed[i].Comments[j].createdAt %> </span></p>
+                                <% } %>
                             <form class = 'commentForm' action=<%="/post/comment/" + feed[i].id%> method="POST">
                                 <input type="text" name="comment" style="width: 100%">
                             </form>
-                        </p>
+                        </div>
                         </div>
                             <button class="Comment btn btn-danger" type="button">Comment</button>
                             <button class="Like btn btn-success" type="button">Like</button>    

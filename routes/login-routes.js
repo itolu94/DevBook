@@ -7,9 +7,12 @@ module.exports = function(app, passport) {
 			res.render("home", {user:req.user});
 		}
 		else {
-			db.Post.findAll({include:[{model:db.Comment, include:db.User}, db.User]}).then(function(data){
-				console.log(data);
-				res.render("home", {feed:data, user:req.user});
+			// gets all the post on the feed
+			db.Post.findAll({include:[{model:db.Comment, include:db.User}, db.User], order: 'createdAt DESC'}).then(function(data){
+				// finds the users personal info
+				db.User.findOne({where: {id: req.user.id}}).then(function(userInfo){
+				res.render("home", {feed:data, user:req.user, personal: userInfo});
+				})
 			});
 		}
 	});

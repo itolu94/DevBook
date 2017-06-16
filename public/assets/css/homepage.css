@@ -1,6 +1,6 @@
 body {
     height: auto;
-    min-height: 100vh;
+    min-height: 100%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -8,12 +8,12 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
-.logo{
-    background: linear-gradient(grey,#3b5998);
-}
 html {
     height: auto;
-    min-height: 100vh;
+    min-height: 100%;
+}
+.logo{
+    background: linear-gradient(grey,#3b5998);
 }
 
 .login{

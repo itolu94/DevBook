@@ -85,9 +85,9 @@ io.on('connection', function(socket) {
     });
 
 
-
-    socket.on('testing', function(msg) {
-        io.emit('chat message', msg)
+    socket.on('Message', function(msg) {
+      console.log(msg);
+      io.emit(msg.reciever);
     })
 
     socket.on('disconnect', function(msg) {

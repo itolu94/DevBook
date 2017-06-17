@@ -19,13 +19,13 @@ $(document).ready(function() {
     });
 
     socket.on(user, function(user) {
-            $('.modal-content').html('');
-            var p = '<p>' + user.first_name + ' ' + user.last_name + '. </p>';
-            var img = "<img class='onlineModel' src='" + user.image + "'>";
-            var mssg = "<button class='messaging' value ='" + user.MemberId + "'> Message </button>"
-            var div = "<div class='modal-content '>" + img + p + mssg +"</div>";
-            $('.modal-content').append(div);
-            modal.style.display = "block";
+        $('.modal-content').html('');
+        var p = '<p>' + user.first_name + ' ' + user.last_name + '. </p>';
+        var img = "<img class='onlineModel' src='" + user.image + "'>";
+        var mssg = "<button class='messaging' value ='" + user.MemberId + "'> Message </button>"
+        var div = "<div class='modal-content >" + img + p + "<div class='messenger'> <input reciever='"+  user.MemberId + "' type='text' class='sendMessage'></div>" + mssg + "</div>";
+        $('.modal-content').append(div);
+        modal.style.display = "block";
     });
 
     // Get the modal
@@ -45,12 +45,22 @@ $(document).ready(function() {
         var socket = io();
         console.log('Dont Touch me!');
         var friend = $(this).attr('value');
-        var data = {'userReq': friend, 'from': user}
-        socket.emit('info', data );
+        var data = { 'userReq': friend, 'from': user }
+        socket.emit('info', data);
     });
+
     span.onclick = function() {
         modal.style.display = "none";
     }
+
+    $(document).on('click', '.messaging', function() {
+        var socket = io();
+        var text = $('.sendMessage').val();
+        var reciever = $(this).val();
+        var message = {'message': text, 'from': user, 'to': reciever}
+        socket.emit('Message',message)
+        console.log(text);
+    });
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {

@@ -30,9 +30,9 @@ $(document).ready(function() {
         } else {
             $('.modal-content').html('');
             var p = '<p>' + user.first_name + ' ' + user.last_name + '. </p>';
-            var img = "<img class='onlineModel' src='" + user.image + "'>";
-            var mssg = "<button class='messaging' value ='" + user.MemberId + "'> Message </button>"
-            var div = "<div class='modal-content >" + img + p + "<div class='messenger'> <input reciever='" + user.MemberId + "' type='text' class='sendMessage'></div>" + mssg + "</div>";
+            var img = "<img class='onlineModel' src=" + user.image + ">";
+            var mssg = "<button class='messaging' value =" + user.MemberId + "'> Message </button>"
+            var div = "<div class='modal-content'>" + img + p + "<div class='messenger'> <input reciever='" + user.MemberId + "' type='text' class='sendMessage'></div>" + mssg + "</div>";
             $('.modal-content').append(div);
             modal.style.display = "block";
         }

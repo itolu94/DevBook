@@ -16,8 +16,9 @@ $(document).ready(function() {
                 var p = users[i].first_name + ' ' + users[i].last_name + '.';
                 var img = "<img class='online' src='" + users[i].image + "'>";
                 var div = "<div class='onlineUser'value ='" + users[i].MemberId + "''>" + img + p + "</div>";
-            }
             $('#san').append(div);
+                
+            }
         }
     });
 

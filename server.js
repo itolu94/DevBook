@@ -39,7 +39,7 @@ passport.deserializeUser(function(id, cb) {
 //Express Configuration
 var app = express();
 
-var PORT = process.env.PORT || 8081;
+var PORT = process.env.PORT || 8082;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -87,7 +87,7 @@ io.on('connection', function(socket) {
 
     socket.on('Message', function(msg) {
         db.User.findOne({ where: { id: msg.from } }).then(function(data) {
-          response = {'sender': data, 'msg': msg }
+          response = {'sender': data, 'msg': msg, 'req':message }
         io.emit(msg.to, response);
             
         })

@@ -87,7 +87,7 @@ io.on('connection', function(socket) {
 
     socket.on('Message', function(msg) {
         db.User.findOne({ where: { id: msg.from } }).then(function(data) {
-          response = {'sender': data, 'msg': msg, 'req':message }
+          response = {'sender': data, 'msg': msg, 'req': 'message' }
         io.emit(msg.to, response);
             
         })

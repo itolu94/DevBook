@@ -16,20 +16,26 @@ $(document).ready(function() {
                 var p = users[i].first_name + ' ' + users[i].last_name + '.';
                 var img = "<img class='online' src='" + users[i].image + "'>";
                 var div = "<div class='onlineUser'value ='" + users[i].MemberId + "''>" + img + p + "</div>";
-            $('#san').append(div);
-                
+                $('#san').append(div);
+
             }
         }
     });
 
     socket.on(user, function(user) {
-        $('.modal-content').html('');
-        var p = '<p>' + user.first_name + ' ' + user.last_name + '. </p>';
-        var img = "<img class='onlineModel' src='" + user.image + "'>";
-        var mssg = "<button class='messaging' value ='" + user.MemberId + "'> Message </button>"
-        var div = "<div class='modal-content >" + img + p + "<div class='messenger'> <input reciever='" + user.MemberId + "' type='text' class='sendMessage'></div>" + mssg + "</div>";
-        $('.modal-content').append(div);
-        modal.style.display = "block";
+        if (user.req === 'message') {
+            var message = '<p>' + user.msg.message + '</p>';
+            console.log(message);
+            $('.messenger').append(message);
+        } else {
+            $('.modal-content').html('');
+            var p = '<p>' + user.first_name + ' ' + user.last_name + '. </p>';
+            var img = "<img class='onlineModel' src='" + user.image + "'>";
+            var mssg = "<button class='messaging' value ='" + user.MemberId + "'> Message </button>"
+            var div = "<div class='modal-content >" + img + p + "<div class='messenger'> <input reciever='" + user.MemberId + "' type='text' class='sendMessage'></div>" + mssg + "</div>";
+            $('.modal-content').append(div);
+            modal.style.display = "block";
+        }
     });
 
     // Get the modal
@@ -47,7 +53,6 @@ $(document).ready(function() {
     // When the user clicks on <span> (x), close the modal
     $(document).on('click', '.onlineUser', function() {
         var socket = io();
-        console.log('Dont Touch me!');
         var friend = $(this).attr('value');
         var data = { 'userReq': friend, 'from': user }
         socket.emit('info', data);
@@ -63,7 +68,6 @@ $(document).ready(function() {
         var reciever = $(this).val();
         var message = { 'message': text, 'from': user, 'to': reciever }
         socket.emit('Message', message)
-        console.log(text);
     });
 
     // When the user clicks anywhere outside of the modal, close it

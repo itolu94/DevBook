@@ -9,13 +9,16 @@ $(document).ready(function() {
 
 
     socket.on(channel, function(users) {
-        onlineSocket = users;
-        for (var i = 0; i < users.length; i++) {
-            var p = users[i].first_name + ' ' + users[i].last_name + '.';
-            var img = "<img class='online' src='" + users[i].image + "'>";
-            var div = "<div class='onlineUser'value ='" + users[i].MemberId + "''>" + img + p + "</div>";
+        if (users.req === 'message') {
+            console.log('Hello Kid');
+        } else {
+            for (var i = 0; i < users.length; i++) {
+                var p = users[i].first_name + ' ' + users[i].last_name + '.';
+                var img = "<img class='online' src='" + users[i].image + "'>";
+                var div = "<div class='onlineUser'value ='" + users[i].MemberId + "''>" + img + p + "</div>";
+            }
+            $('#san').append(div);
         }
-        $('#san').append(div);
     });
 
     socket.on(user, function(user) {
@@ -23,7 +26,7 @@ $(document).ready(function() {
         var p = '<p>' + user.first_name + ' ' + user.last_name + '. </p>';
         var img = "<img class='onlineModel' src='" + user.image + "'>";
         var mssg = "<button class='messaging' value ='" + user.MemberId + "'> Message </button>"
-        var div = "<div class='modal-content >" + img + p + "<div class='messenger'> <input reciever='"+  user.MemberId + "' type='text' class='sendMessage'></div>" + mssg + "</div>";
+        var div = "<div class='modal-content >" + img + p + "<div class='messenger'> <input reciever='" + user.MemberId + "' type='text' class='sendMessage'></div>" + mssg + "</div>";
         $('.modal-content').append(div);
         modal.style.display = "block";
     });
@@ -57,8 +60,8 @@ $(document).ready(function() {
         var socket = io();
         var text = $('.sendMessage').val();
         var reciever = $(this).val();
-        var message = {'message': text, 'from': user, 'to': reciever}
-        socket.emit('Message',message)
+        var message = { 'message': text, 'from': user, 'to': reciever }
+        socket.emit('Message', message)
         console.log(text);
     });
 

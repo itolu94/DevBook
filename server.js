@@ -79,15 +79,18 @@ io.on('connection', function(socket) {
         });
     });
     socket.on('info', function(msg) {
-        db.User.findOne({ where: { id: msg.userReq  } }).then(function(data) {
+        db.User.findOne({ where: { id: msg.userReq } }).then(function(data) {
             io.emit(msg.from, data);
         })
     });
 
 
     socket.on('Message', function(msg) {
-      console.log(msg);
-      io.emit(msg.reciever);
+        db.User.findOne({ where: { id: msg.from } }).then(function(data) {
+          response = {'sender': data, 'msg': msg }
+        io.emit(msg.to, response);
+            
+        })
     })
 
     socket.on('disconnect', function(msg) {

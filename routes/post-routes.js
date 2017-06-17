@@ -29,4 +29,21 @@ module.exports = function(app, passport) {
 			});
 		});
 	});
+
+	app.post("/post/like/:postid", function(req, res){
+		db.Post.findOne({
+			where: {
+				id: req.params.postid
+			}
+		}).then(function(post){
+			db.User.findOne({
+				where: {
+					id: req.user.id
+				}
+			}).then(function(user){
+				post.addLike(user);
+				res.redirect("/");
+			});
+		});
+	});
 };

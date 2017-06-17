@@ -8,31 +8,32 @@ var db = require("./models");
 
 //Passport Configuration
 passport.use(new Strategy({
-  passReqToCallBack: true
-},
-  function(username, password, cb) {
-    db.Member.findOne({where:{username:username}}).then(function(user) {
-      if (!user) { return cb(null, false, {message: "Invalid Username."}); }
-      user.checkPassword(password, function(err, res){
-        if (err || !res){
-          return cb(null, false, {message: "Invalid Password."});
-        }
-        else {
-          return cb(null, user.toJSON());
-        }
-      });
-    });
-  }));
+        passReqToCallBack: true
+    },
+    function(username, password, cb) {
+        db.Member.findOne({ where: { username: username } }).then(function(user) {
+            if (!user) {
+                return cb(null, false, { message: "Invalid Username." });
+            }
+            user.checkPassword(password, function(err, res) {
+                if (err || !res) {
+                    return cb(null, false, { message: "Invalid Password." });
+                } else {
+                    return cb(null, user.toJSON());
+                }
+            });
+        });
+    }));
 
 //Persistence Configuration
 passport.serializeUser(function(user, cb) {
-  cb(null, user.id);
+    cb(null, user.id);
 });
 
 passport.deserializeUser(function(id, cb) {
-  db.Member.findOne({where:{id: id}}).then(function(user) {
-    cb(null, user);
-  });
+    db.Member.findOne({ where: { id: id } }).then(function(user) {
+        cb(null, user);
+    });
 });
 
 //Express Configuration
@@ -58,12 +59,56 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
 //Routes
-require("./routes/login-routes.js")(app,passport);
-require("./routes/post-routes.js")(app,passport);
+require("./routes/login-routes.js")(app, passport);
+require("./routes/post-routes.js")(app, passport);
+
+
+
+// =======================================================
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+io.on('connection', function(socket) {
+    var user;
+    socket.on('status', function(userid) {
+        user = userid;
+        db.User.findAll({ where: { online: true } }).then(function(data) {
+            io.emit('online' + user, data);
+        });
+        db.User.update({ online: true }, {
+            where: { MemberId: user }
+        });
+    });
+    socket.on('info', function(msg) {
+        db.User.findOne({ where: { id: msg.userReq  } }).then(function(data) {
+            io.emit(msg.from, data);
+        })
+    });
+
+
+
+    socket.on('testing', function(msg) {
+        io.emit('chat message', msg)
+    })
+
+    socket.on('disconnect', function(msg) {
+        db.User.update({ online: false }, {
+            where: { MemberId: user }
+        });
+        db.User.findAll({ where: { online: true } }).then(function(data) {
+            io.emit('online' + user, data);
+        });
+    });
+});
+
+// ======================================================
+
+
+
 
 //Sync and Start
-db.sequelize.sync().then(function(){
-	app.listen(PORT, function(){
-		console.log("App listening on PORT " + PORT);
-	});
+db.sequelize.sync().then(function() {
+    // now http.listen so that socket.io can work
+    http.listen(PORT, function() {
+        console.log("App listening on PORT " + PORT);
+    });
 });

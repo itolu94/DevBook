@@ -4,39 +4,49 @@
 			<meta charset="UTF-8">
             <!-- Latest compiled and minified CSS -->
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            <!-- font-awsome minified css -->
+            <link rel="stylesheet" type="text/css" href="assets/TextInputEffects/fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+            <!-- css for input fields -->
+            <link rel="stylesheet" type="text/css" href="/assets/TextInputEffects/css/set1.css" />
             <!-- homepage stylesheet -->
             <link rel="stylesheet" href="assets/css/homepage.css">
-            <title>JrDevBook</title>
-        </head>
-        <!-- JrDevBook Robot Logo -->
-        <body>
-      <div class="header center-block text-center" id='logo'>
-            <div class='form-inline'><img src="http://blog.flamingtext.com/blog/2017/06/14/flamingtext_com_1497479233_446317805.png" border="0"></div>
-            <a href='/logout'> <img src='assets/img/JuniorDevbook-Icon.png' alt='robot' style='width:40px;height:50px;' id='robot'></a>
-            
+            <title>WebSpace</title>
+    </head>
+    <body>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 text-center loginPageContent">
+            <div class="header center-block text-center">
+              <div class='form-inline'>
+              <h1>WebSpace</h1>
+              </div>
+              <a href='/logout'><img src='assets/img/WebSpace_Icon.png' alt='WebSpace Icon' id='logo'></a>
+            </div>
+              <% if(message.error) {%>
+                <p><%=message.error%></p>
+              <% } %> 
+              <form action="/login" method="post">
+                <section class="content">
+                  <span class="input input--hideo">
+                    <input class="input__field input__field--hideo" name='username' placeholder='Username' type="text" id="input-41" />
+                    <label class="input__label input__label--hideo" for="input-41">
+                      <i class="fa fa-fw fa-user icon icon--hideo"></i>
+                      <span class="input__label-content input__label-content--hideo">Username</span>
+                    </label>
+                  </span>
+                  <br>
+                  <span class="input input--hideo">
+                    <input class="input__field input__field--hideo" name='password' placeholder='Passowrd' type="text" id="input-43" />
+                    <label class="input__label input__label--hideo" for="input-43">
+                      <i class="fa fa-fw fa-lock icon icon--hideo"></i>
+                      <span class="input__label-content input__label-content--hideo">Password</span>
+                    </label>
+                  </span>
+                  <input class='loginCred center-block' type="submit" value="Submit"/>
+                </section>
+              </form>
+            </div>
         </div>
-       	<div class="container center-block text-center" id='userLogin'>
-       		<div class="row">
-       			<div class="col-xs-12"> 
-       				<div>  
-					<form action="/login" method="post">
-						<div>
-							<input type="text" name="username" placeholder="Username" /><br/>
-						</div>
-						<div>
-							<input type="password" name="password" placeholder="Password" />
-						</div>
-            <% if(message.error) {%>
-              <p><%=message.error%></p>
-            <% } %>
-						<div>
-							<input type="submit" value="Submit"/>
-						</div>
-					</form>
-            		</div>
-            	</div>
-       		</div>
-       	</div>
-        <footer> <br/>Logo Design by <a href="http://www.flamingtext.com/" ><h4>FlamingText.com</h4></a> </footer>
-        </body>
-    </html>
+      </div>   
+  </body>
+</html>
